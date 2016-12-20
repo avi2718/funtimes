@@ -24,17 +24,18 @@ class MapViewController: UIViewController {
         segmentedControl.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.5)
         segmentedControl.selectedSegmentIndex = 0
         
-        segmentedControl.selectedSegmentIndex = 0
+        segmentedControl.addTarget(self,
+                                   action: "mapTypeChanged:",
+                                   forControlEvents: .ValueChanged)
         
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(segmentedControl)
         
-        let topConstraint = segmentedControl.topAnchor.constraintEqualToAnchor(view.topAnchor)
-        let leadingConstraint = segmentedControl.leadingAnchor.constraintEqualToAnchor(view.leadingAnchor)
-        let trailingConstraint = segmentedControl.trailingAnchor.constraintEqualToAnchor(view.trailingAnchor)
+        let topConstraint = segmentedControl.topAnchor.constraintEqualToAnchor(topLayoutGuide.bottomAnchor, constant: 8)
+        let margins = view.layoutMarginsGuide
+        let trailingConstraint = segmentedControl.leadingAnchor.constraintEqualToAnchor(margins.trailingAnchor)
         
         topConstraint.active = true
-        leadingConstraint.active = true
         trailingConstraint.active = true
     }
     
